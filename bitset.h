@@ -17,14 +17,15 @@ typedef unsigned long bitset_index_t;
 #define SETBIT(jmeno_pole, index, vyraz) (vyraz) ? (jmeno_pole[(index/ULONG)+1] |= (1UL << (index % ULONG))) : \
 												   (jmeno_pole[(index/ULONG)+1] &= (1UL << (index % ULONG)))
 
+// todo: edit static_assert
 // macro for creating array jmeno_pole with size of velikost
 #define bitset_create(jmeno_pole, velikost)                          \
-	static_assert(((unsigned int)velikost >= 0),                     \
+	static_assert(((unsigned long)velikost >= 0),                     \
 		"Velikost pro alokaci bitset_t pole musi byt kladny cislo!");\
 	unsigned long jmeno_pole[MAX_SIZE(velikost)] = {velikost};	 	 
 
 // macro for dynamically alloc bitset jmeno_pole with size of velikost
-#define bitset_alloc(jmeno_pole, velikost) assert(velikost >= 0); bitset_t jmeno_pole = calloc(MAX_SIZE(velikost), sizeof(unsigned long));\
+#define bitset_alloc(jmeno_pole, velikost) assert(!(velikost <= 0)); bitset_t jmeno_pole = calloc(MAX_SIZE(velikost), sizeof(unsigned long));\
     if (jmeno_pole == NULL) error_exit("bitset_alloc: Chyba alokace pameti");\
 	jmeno_pole[0] = velikost;
 

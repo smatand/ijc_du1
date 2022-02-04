@@ -1,3 +1,4 @@
+# primes-i should have -O0 arg
 FLAGS = -O2 -pedantic -std=c11 -g3 -Wall -Wextra
 CC = gcc
 EXECUTABLES = primes primes-i steg-decode
@@ -36,7 +37,6 @@ steg-decode.o: steg-decode.c
 
 run:
 	make all
-	ulimit -s unlimited
 merlin:
 	scp -r $(FILES) xsmata03@merlin.fit.vutbr.cz:~/ijc_uloha1
 clean: 
