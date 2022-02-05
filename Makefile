@@ -1,4 +1,4 @@
-# primes-i should have -O0 arg
+# primes-i (-O0)
 FLAGS = -O2 -pedantic -std=c11 -g3 -Wall -Wextra
 CC = gcc
 EXECUTABLES = primes primes-i steg-decode

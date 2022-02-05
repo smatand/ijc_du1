@@ -16,28 +16,34 @@ int main(int argc, char* argv[]) {
 	// get prime number indexes of bytes from which the LSB bit will be read to assembly a char
 	bitset_alloc(primes, size) 
 	Eratosthenes(primes);
-	char toPrint = '\0'; // in case of NULL the program will end with SUCCESS
+	// according to assignment, we may print the string only if the '\0' char is found
+	char * toPrint = malloc(1); // sizeof(char)
+//	char toPrint = '\0'; // in case of NULL the program will end with SUCCESS
 	int count = 0;
+	int index = 0;
 
 	for (bitset_index_t i = 23; i<size; i += 2) {
 		// when the bit on index i is 0, it's a prime number
 		// in that case save the LSB of saved data to toPrint
 		if (!bitset_getbit(primes, i)) {
 //			printf("%c\n", image->data[i]);
-			toPrint |= ((unsigned char)image->data[i] & 0x01) << count;
+			toPrint[index] |= ((unsigned char)image->data[i] & 0x01) << count;
 			count++;
 		}
 		if (count == 8) {
-			printf("%c", toPrint);
+//			printf("%c", toPrint);
 			count = 0;
-			if (toPrint == '\0') {
+			if (toPrint[index] == '\0') {
+				printf("%s", toPrint);
 				break;
 			}
-			toPrint = '\0';
+			toPrint = realloc(toPrint, ++index+1);
+			toPrint[index] = '\0';
 		}
 	}
-
+	free(toPrint);
 	ppm_free(image);
 	bitset_free(primes);
+
 	return 0;
 }
