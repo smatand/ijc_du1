@@ -9,11 +9,13 @@
 struct ppm * ppm_read(const char * filename) {
 	FILE *fp;
 	fp = fopen(filename, "rb");
+
 	// make sure the file opens
 	if (!fp) {
 		warning_msg("Chyba nacteni souboru '%s'\n", filename);
 		goto error;
 	}
+
 	// buffer
 	char buff[3];
 	unsigned width = 0;
@@ -31,16 +33,19 @@ struct ppm * ppm_read(const char * filename) {
 		warning_msg("Program podporuje jenom format P6 (ppm)!\n");
 		goto error;
 	}
+
 	// initialize struct with read data
 	unsigned imageSize = width*height*3;
     if (imageSize > MAX_IMAGE_SIZE) {
         warning_msg("Prilis velkej obrazek v souboru %s\n", filename);
         goto error;
     }
+
     if ((rgb < 0) || (rgb > MAX_RGB)) {
         warning_msg("Rozsah RGB hodnot muze byt jenom 0-255. Soubor %s ma %d", filename, rgb);
         goto error;
     }
+
 	struct ppm * image = malloc(sizeof(struct ppm) + imageSize);
 	if (image == NULL) {
 		warning_msg("Alokace pomoci malloc()\n.");

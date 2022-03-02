@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
 	int index = 0; // saving newly created chars at toPrint[index]
 	int isNull = 0; // we may print the string only if the NULL char is defined
 
-	for (bitset_index_t i = 23; i<size; i += 2) {
+	for (bitset_index_t i = 29; i<size; i += 2) {
 		// if bitset[i] == 0, then it's a prime number
 		// in that case save the LSB of saved data to toPrint
 		if (!bitset_getbit(primes, i)) {

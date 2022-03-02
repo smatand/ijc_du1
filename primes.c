@@ -4,7 +4,7 @@
 #include "bitset.h"
 #include "error.h"
 
-#define MAX 200000000
+#define MAX 300000000
 #define TEMP 10
 
 int main(void) {
