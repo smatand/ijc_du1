@@ -6,6 +6,9 @@
 #define MAX_RGB 255
 
 
+/**
+ * @brief	Data about the size and data of ppm image
+ */
 struct ppm {
 	unsigned xsize;
 	unsigned ysize;
@@ -13,19 +16,17 @@ struct ppm {
 };
 
 /**
- * reads from file filename and stores elements of created struct ppm
- * ppm->data is dynamically allocated, so it must have its free() fcn
+ * @brief	Read data from file filename and store them
  *
- * @param filename used to read the file from
- *
- * @return struct with defined sizes and dynamically alloc-ted char[]
+ * @param	filename used to read the file from
+ * @return	struct with stored data 
  */
 struct ppm * ppm_read(const char * filename);
 
 /**
- * frees dynamically allocated struct ppm
+ * @brief		Free dynamically allocated memory
  *
- * @param *p used to free from memory
+ * @param *p	used to free from memory
  */
 void ppm_free(struct ppm *p);
 

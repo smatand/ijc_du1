@@ -28,7 +28,6 @@ struct ppm * ppm_read(const char * filename) {
 		warning_msg("Problemy s nactenim hlavicky souboru %s.\n", filename);
 		goto error;
 	}
-	// todo: edit it for more details about error
 	if (strcmp(buff, "P6")) {
 		warning_msg("Program podporuje jenom format P6 (ppm)!\n");
 		goto error;
