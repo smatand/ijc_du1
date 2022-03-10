@@ -4,7 +4,7 @@
 #include "eratosthenes.h"
 
 void Eratosthenes(bitset_t pole) {
-	// assigning 1 as it is nonprime num
+	// assigning 1 on index 0 and 1 as it is nonprime number
 	bitset_setbit(pole, 0, 1);
 	bitset_setbit(pole, 1, 1);
 		

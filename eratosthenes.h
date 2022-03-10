@@ -4,11 +4,11 @@
 #define ERATOSTHENES_H
 
 /**
- * find all prime numbers in bitset_t pole (array) by Sieve of Eratosthenes
- * print last 10 of them, each on new line in ascending order
- * result: in pole (array) prime indexes have value of 0
+ * @brief	Find all prime numbers
+ * @details searches for prime numbers using the algorithm Sieve of Eratosthenes
+ *			bits stored in pole[index], where the index is prime number, are set to 0
  *
- * @param pole to read data from
+ * @param	pole to read data from
  */
 void Eratosthenes(bitset_t pole);
 
