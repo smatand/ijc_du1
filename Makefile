@@ -1,5 +1,5 @@
 # primes-i (-O0)
-FLAGS = -O2 -pedantic -std=c11 -g3 -Wall -Wextra
+FLAGS = -pedantic -O2 -std=c11 -g -Wall -Wextra
 CC = gcc
 EXECUTABLES = primes primes-i steg-decode
 FILES = *
@@ -37,7 +37,7 @@ steg-decode.o: steg-decode.c
 
 run:
 	make all
-merlin:
-	scp -r $(FILES) xsmata03@merlin.fit.vutbr.cz:~/ijc_uloha1
+	./primes
+	./primes-i
 clean: 
 	rm -f *.o $(EXECUTABLES)
