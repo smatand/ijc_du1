@@ -44,8 +44,8 @@ typedef unsigned long bitset_index_t;
  * @param velikost size of bitset
  * @return bitset array jmeno_pole
  */
-#define bitset_create(jmeno_pole, velikost)	\
-	static_assert(((unsigned long)velikost >= 0), "Velikost pro alokaci bitset_t pole musi byt kladny cislo!");	\
+#define bitset_create(jmeno_pole, velikost) \
+	_Static_assert((velikost >= 0), "Velikost pro alokaci bitset_t pole musi byt kladny cislo!");	\
 	unsigned long jmeno_pole[MAX_SIZE(velikost)] = {velikost};	 	 
 
 /**
@@ -79,8 +79,8 @@ typedef unsigned long bitset_index_t;
  * @param vyraz value to which the jmeno_pole[index] will be set
  */
 #define bitset_setbit(jmeno_pole, index, vyraz)	\
-	((index) >= bitset_size(jmeno_pole) ?	(error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu",	\
-												(unsigned long)index, bitset_size(jmeno_pole)), 0)   :	\
+	((index) >= bitset_size(jmeno_pole) ?	(error_exit("bitset_setbit: Index %lld mimo rozsah 0..%lld",	\
+												index, bitset_size(jmeno_pole)), 0)   :						\
 										    (SETBIT(jmeno_pole, index, vyraz)))
 
 /**
@@ -90,9 +90,9 @@ typedef unsigned long bitset_index_t;
  * @param index as index in bitset array
  * @return value of jmeno_pole[index]
  */
-#define bitset_getbit(jmeno_pole, index)	\
-	((index) >= bitset_size(jmeno_pole) ?	\
-		(error_exit("bitset_getbit: Index %lu mimo rozsah 0..%lu", (unsigned long)index, (unsigned long)bitset_size(jmeno_pole)), 0)	:	\
+#define bitset_getbit(jmeno_pole, index)																		\
+	((index) >= bitset_size(jmeno_pole) ?																		\
+		(error_exit("bitset_getbit: Index %lld mimo rozsah 0..%lld", index, bitset_size(jmeno_pole)), 0)	:	\
 											(GETBIT(jmeno_pole, index)))
 
 /**
@@ -137,7 +137,7 @@ inline void bitset_setbit(bitset_t jmeno_pole, const unsigned long index, const 
  */
 inline unsigned long bitset_getbit(bitset_t jmeno_pole, const unsigned long index) {
 	if (index > bitset_size(jmeno_pole)) {
-		error_exit("bitset_getbit: index %lu mimo rozsah 0..%lu", (unsigned long)index, bitset_size(jmeno_pole));
+		error_exit("bitset_getbit: index %lu mimo rozsah 0..%lu", index, bitset_size(jmeno_pole));
 	}
 	return GETBIT(jmeno_pole, index);
 }
