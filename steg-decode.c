@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	bitset_alloc(primes, size) 
 	Eratosthenes(primes); // get prime indexes of bitset
 
-	char * toPrint = malloc(1); // sizeof(char) == 1 always
+	char * toPrint = calloc(1, 1); // sizeof(char) == 1 always
 	int count = 0; // used to count 8 bits which create a char value
 	int index = 0; // saving newly created chars at toPrint[index]
 	int isNull = 0; // we may print the string only if the NULL char is defined
@@ -28,13 +28,12 @@ int main(int argc, char* argv[]) {
 		// if bitset[i] == 0, then it's a prime number
 		// in that case save the LSB of saved data to toPrint
 		if (!bitset_getbit(primes, i)) {
-			toPrint[index] |= ((unsigned char)image	->data[i] & 0x01) << count;
+			toPrint[index] |= ((unsigned char)image->data[i] & 1) << count;
 			count++;
 		}
 
 		if (count == 8) {
 			count = 0;
-//			todo: check the error of valgrind here			
 			if (toPrint[index] == '\0') {
 				isNull = 1;
 				break;
@@ -49,7 +48,7 @@ int main(int argc, char* argv[]) {
 		free(toPrint);
 		ppm_free(image);
 		bitset_free(primes);
-		error_exit("nenalezena tajna zprava, resp. chybi '\0' znak.\n");
+		error_exit("Nenalezena tajna zprava, resp. chybi '\0' znak.\n");
 	}
 
 	// in case of found '\0' char, the program ends with success
