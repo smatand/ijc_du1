@@ -45,7 +45,7 @@ typedef unsigned long bitset_index_t;
  * @return bitset array jmeno_pole
  */
 #define bitset_create(jmeno_pole, velikost) \
-	_Static_assert((velikost >= 0), "Velikost pro alokaci bitset_t pole musi byt kladny cislo!");	\
+	static_assert((velikost >= 0), "Velikost pro alokaci bitset_t pole musi byt kladny cislo!");	\
 	unsigned long jmeno_pole[MAX_SIZE(velikost)] = {velikost};	 	 
 
 /**
@@ -55,8 +55,8 @@ typedef unsigned long bitset_index_t;
  * @param velikost of size of bitset
  * @return bitset array jmeno_pole
  */
-#define bitset_alloc(jmeno_pole, velikost)	\
-	assert(!(velikost <= 0));	\
+#define bitset_alloc(jmeno_pole, velikost)										\
+	assert(!(velikost <= 0));													\
 	bitset_t jmeno_pole = calloc(MAX_SIZE(velikost), sizeof(unsigned long));	\
     if (jmeno_pole == NULL) error_exit("bitset_alloc: Chyba alokace pameti");	\
 	jmeno_pole[0] = velikost;
@@ -78,10 +78,9 @@ typedef unsigned long bitset_index_t;
  * @param index as index in bitset array
  * @param vyraz value to which the jmeno_pole[index] will be set
  */
-#define bitset_setbit(jmeno_pole, index, vyraz)	\
-	((index) >= bitset_size(jmeno_pole) ?	(error_exit("bitset_setbit: Index %lld mimo rozsah 0..%lld",	\
-												index, bitset_size(jmeno_pole)), 0)   :						\
-										    (SETBIT(jmeno_pole, index, vyraz)))
+#define bitset_setbit(jmeno_pole, index, vyraz)	((index) >= bitset_size(jmeno_pole) ?						\
+		(error_exit("bitset_setbit: Index %lld mimo rozsah 0..%lld", index, bitset_size(jmeno_pole)), 0)   :\
+		(SETBIT(jmeno_pole, index, vyraz)))
 
 /**
  * @brief Get bit from jmeno_pole[index]
@@ -90,10 +89,9 @@ typedef unsigned long bitset_index_t;
  * @param index as index in bitset array
  * @return value of jmeno_pole[index]
  */
-#define bitset_getbit(jmeno_pole, index)																		\
-	((index) >= bitset_size(jmeno_pole) ?																		\
+#define bitset_getbit(jmeno_pole, index) ((index) >= bitset_size(jmeno_pole) ?									\
 		(error_exit("bitset_getbit: Index %lld mimo rozsah 0..%lld", index, bitset_size(jmeno_pole)), 0)	:	\
-											(GETBIT(jmeno_pole, index)))
+		(GETBIT(jmeno_pole, index)))
 
 /**
  * @brief Free dynamically allocated bitset array
