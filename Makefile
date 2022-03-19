@@ -1,3 +1,8 @@
+# Makefile
+# Riesenie IJC-DU1, priklad b), 22.03.2022
+# Autor: Andrej Smatana, FIT
+# Prelozene: gcc 9.4.0
+
 # primes-i (-O0)
 FLAGS = -pedantic -O2 -std=c11 -g -Wall -Wextra
 CC = gcc
@@ -39,5 +44,7 @@ run:
 	make all
 	./primes
 	./primes-i
+archive:
+	zip xsmata03.zip *.c *.h Makefile
 clean: 
 	rm -f *.o $(EXECUTABLES)

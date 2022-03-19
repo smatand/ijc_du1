@@ -1,3 +1,8 @@
+// ppm.c
+// Riesenie IJC-DU1, priklad b), 22.03.2022
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

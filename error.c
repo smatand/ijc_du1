@@ -1,3 +1,8 @@
+// error.c
+// Riesenie IJC-DU1, priklad b), 22.03.2022
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>

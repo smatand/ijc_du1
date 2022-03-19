@@ -1,3 +1,8 @@
+// eratosthenes.c
+// Riesenie IJC-DU1, priklad a), 22.03.2022
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #include <stdio.h>
 #include <math.h>
 #include <time.h>

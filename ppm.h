@@ -1,3 +1,8 @@
+// ppm.h
+// Riesenie IJC-DU1, priklad b), 22.03.2022
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #ifndef PPM_H
 #define PPM_H
 

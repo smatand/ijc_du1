@@ -1,3 +1,8 @@
+// primes.c
+// Riesenie IJC-DU1, priklad a)
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #include <stdio.h>
 #include <time.h>
 #include "eratosthenes.h"

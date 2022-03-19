@@ -1,3 +1,8 @@
+// eratosthenes.h
+// Riesenie IJC-DU1, priklad a), 22.03.2022
+// Autor: Andrej Smatana, FIT
+// Prelozene: gcc 9.4.0
+
 #include "bitset.h"
 
 #ifndef ERATOSTHENES_H
